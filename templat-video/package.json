@@ -1,0 +1,22 @@
+{
+  "name": "templat-video",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.tsx",
+    "uji": "remotion still src/index.tsx contoh keluar.png --frame=30 --gl=angle --timeout=240000",
+    "render": "remotion render src/index.tsx contoh keluar.mp4 --gl=angle --concurrency=1 --timeout=240000"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.200",
+    "@remotion/google-fonts": "4.0.200",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.200",
+    "three": "0.160.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.3",
+    "@types/three": "0.160.0",
+    "typescript": "5.5.4"
+  }
+}

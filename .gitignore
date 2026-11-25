@@ -1,0 +1,10 @@
+node_modules/
+kantor/data/
+pustaka/lemo-opuscar/
+*.env
+*kunci*
+jobs/*/
+out/
+keluar.*
+__pycache__/
+*.mp4
