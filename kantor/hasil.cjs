@@ -36,6 +36,17 @@ function storyboard(id) {
   if (beda.length) kurang.push('narasi adegan ' + beda.join(', ') + ' tidak sama dengan yang disetujui');
   return { adegan: s, kurang, sidik: x.digest('hex').slice(0, 16) };
 }
+// gaya.json: [{"id":"lemo:watercolor","alasan":"..."}] tiga usulan bila pengguna menyerahkan gaya kepada tim
+function gaya(id) {
+  let g; try { g = JSON.parse(fs.readFileSync(path.join(dir(id), 'gaya.json'), 'utf8')); } catch { return []; }
+  if (!Array.isArray(g)) return []; const ada = new Set();
+  return g.filter((x) => x && /^(3d-pahat|stickman|voxel-chibi|lemo:[a-z0-9-]+)$/.test(x.id) && String(x.alasan || '').trim().length > 14 && !ada.has(x.id) && ada.add(x.id)).slice(0, 3).map((x) => ({ id: x.id, alasan: String(x.alasan).slice(0, 300) }));
+}
+function judul(id) {
+  let t; try { t = fs.readFileSync(path.join(dir(id), '01b-judul.md'), 'utf8'); } catch { return []; }
+  const o = []; for (const l of t.split(/\r?\n/)) { const c = l.replace(/\*\*|`/g, '').split('|').map((x) => x.trim()); if (/^\d+$/.test(c[1]) && c[2] && c.length > 3) o.push(c[2].replace(/^["“]|["”]$/g, '').slice(0, 90)); }
+  return [...new Set(o)].slice(0, 3);
+}
 function gerbangSb(id) {
   const e = [], j = P.read().jobs[id] || {}, n = narasi(id), b = storyboard(id), v = j.review_naskah, w = j.review_storyboard;
   if (!n) e.push('naskah belum ada');
@@ -47,7 +58,7 @@ function gerbangSb(id) {
 function satu(id) {
   const files = daftar(id), teks = {};
   for (const f of files) if (f.jenis === 'teks') teks[f.path] = fs.readFileSync(path.join(dir(id), f.path), 'utf8').slice(0, 60000);
-  return { files, teks, narasi: narasi(id), storyboard: storyboard(id), gerbang: gerbang(id) };
+  return { files, teks, narasi: narasi(id), storyboard: storyboard(id), gerbang: gerbang(id), gaya: gaya(id), judul: judul(id), langkah: require('./langkah.cjs').periksa(id) };
 }
 function semua() {
   const o = {};
@@ -104,7 +115,7 @@ function jaga() {
   const lama = siaga(); if (lama) { console.error('Sudah ada yang siaga'); process.exit(2); }
   cek(); setInterval(cek, 2000);
 }
-module.exports = { gerbangSb, storyboard, siaga, daftar, satu, semua, kirim, gerbang, narasi };
+module.exports = { gaya, judul, gerbangSb, storyboard, siaga, daftar, satu, semua, kirim, gerbang, narasi };
 if (require.main === module) {
   const [, , op, id] = process.argv;
   if (op === 'gerbang') { const e = gerbang(id); console.log(e.length ? 'RENDER DITOLAK\n- ' + e.join('\n- ') : 'BOLEH RENDER'); process.exit(e.length ? 1 : 0); }

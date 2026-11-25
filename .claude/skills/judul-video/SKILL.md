@@ -32,3 +32,6 @@ Kalimat utuh, 3-7 kata, maks 50 karakter. Topik tertulis. Dimengerti dalam 2 det
 Dilarang: pentingnya, mengenal, upaya, ternyata, wajib tahu, dalam rangka, dua topik, penjelasan setelah koma.
 Tes balik: orang lain menebak isi dari judul saja. Meleset = ganti. Jalankan peduli-qc/scripts/cek-judul.cjs.
 Teks sampul 2-4 kata, tidak mengulang judul.
+
+## Berkas pilihan
+01b-judul.md wajib memuat tabel `| No | Judul | Alasan |`, urut dari terkuat, minimal 3 yang benar-benar berbeda sudutnya dan semuanya cocok dengan narasi. Tiga teratas tampil sebagai pilihan di kantor.

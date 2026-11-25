@@ -35,6 +35,19 @@ if (require.main === module) {
     if (c === 'jobs' && (v.review_naskah || v.review_storyboard || v.review_hasil)) { console.error('Keputusan hanya boleh dibuat pengguna di kantor'); process.exit(1); }
     if (c === 'jobs' && v.stage === 'animasi') { const e = require('./hasil.cjs').gerbangSb(a); if (e.length) { console.error('ANIMASI DITOLAK\n- ' + e.join('\n- ')); process.exit(1); } }
     if (c === 'jobs' && v.stage === 'editing') { const e = require('./hasil.cjs').gerbang(a); if (e.length) { console.error('RENDER DITOLAK\n- ' + e.join('\n- ')); process.exit(1); } }
-    update(c, a, JSON.parse(b)); console.log('ok'); }
-  else { console.error('Pakai: list|add|update jobs|chat ...'); process.exit(1); }
+    if (c === 'jobs') v.denyut = Date.now(); update(c, a, v); console.log('ok'); }
+  else if (op === 'minta') { // minta <id> naskah|storyboard|hasil : memunculkan pilihan setuju/revisi di kantor
+    const H = require('./hasil.cjs'), e = [], j = read().jobs[c], k = { naskah: 'setuju', storyboard: 'storyboard', hasil: 'qc' }[a];
+    if (!j) e.push('job tidak ada di papan'); else if (!k) e.push('pilih naskah, storyboard, atau hasil');
+    else {
+      const n = H.narasi(c), s = a === 'storyboard' && H.storyboard(c);
+      if (a === 'naskah') { if (!n) e.push('jobs/' + c + '/02-naskah.md belum ada'); else if (!n.baris.length) e.push('02-naskah.md tidak memakai tabel: | nomor | tokoh | ucapan | teks layar | emosi | gambar | fakta |'); if ((!j.style || j.style === 'lain' || j.style === 'tim') && H.gaya(c).length !== 3) e.push('gaya.json harus berisi 3 usulan gaya dengan alasan'); if (!j.title) e.push('title job masih kosong'); }
+      if (a === 'storyboard') { if (!s) e.push('storyboard.json belum ada'); else e.push(...s.kurang); }
+      if (a === 'hasil' && !H.daftar(c).some((f) => f.jenis === 'video')) e.push('video belum ada di jobs/' + c);
+    }
+    if (e.length) { console.error('BELUM BISA MINTA PERSETUJUAN\n- ' + e.join('\n- ')); process.exit(1); }
+    update('jobs', c, { stage: k, status: 'menunggu', activity: '' });
+    add('chat', { from: 'bima', job: c, text: { naskah: 'Judul dan narasi siap dibaca. Setujui atau minta revisi.', storyboard: 'Storyboard siap diputar. Setujui atau minta revisi.', hasil: 'Video siap ditonton. Setujui atau minta revisi.' }[a] });
+    console.log('Pilihan setuju dan revisi sudah tampil di kantor'); }
+  else { console.error('Pakai: minta|list|add|update jobs|chat ...'); process.exit(1); }
 }

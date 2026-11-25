@@ -30,13 +30,6 @@ function page() {
   const h = fs.readFileSync(path.join(__dirname, 'kantor-peduli.html'), 'utf8');
   return `<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0}</style></head><body><script>(${shim})()</script>${h}</body></html>`;
 }
-// balasan tanpa AI: hanya membacakan data papan
-function auto(prompt) {
-  let d = {}; try { d = JSON.parse(prompt.match(/\nDATA: (.*)\nRIWAYAT:/)[1]); } catch {}
-  const j = (d.pekerjaan || []).filter((x) => x.status !== 'selesai').slice(0, 3);
-  const s = j.length ? j.map((x) => `${x.judul}: ${x.status === 'antre' ? 'masih antre' : x.status === 'menunggu' ? 'menunggu persetujuan Anda' : `tahap ${x.tahap}, ${x.persen}%`}`).join('. ') : 'Belum ada pekerjaan berjalan';
-  return `(Balasan otomatis) Pesan Anda tersimpan. ${s}. Untuk video baru, tekan "Buat video baru".`;
-}
 let running = false;
 function ask(prompt) {
   return new Promise((ok, no) => {
@@ -73,10 +66,10 @@ http.createServer(async (q, r) => {
     if (q.url === '/api/update') { P.update(d.c, d.id, d.data); return json(200, { ok: true }); }
     if (q.url === '/api/reply') {
       const p = String(d.prompt);
-      if (!hasClaude()) return json(200, { text: auto(p), auto: true });
+      if (!hasClaude()) return json(200, { text: '', auto: true });
       if (running) return json(429, { error: 'sedang menjawab' });
       running = true;
-      try { return json(200, { text: await ask(p) }); } catch (e) { console.error('Balasan gagal:', e.message); return json(200, { text: auto(p), auto: true }); } finally { running = false; }
+      try { return json(200, { text: await ask(p) }); } catch (e) { console.error('Balasan gagal:', e.message); return json(200, { text: '', auto: true }); } finally { running = false; }
     }
     json(404, { error: 'tidak ada' });
   } catch (e) { if (!r.headersSent) json(400, { error: e.message }); else r.end(); }
