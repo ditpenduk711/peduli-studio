@@ -9,6 +9,10 @@ for (const [re, m, max] of [[/bukan (sekadar |hanya )?[^.?!]{1,50}(tapi|tetapi|m
 S.filter((s) => W(s) > 20).forEach((s) => bad.push('kalimat ' + W(s) + ' kata: ' + s.trim().slice(0, 50)));
 const pendek = S.filter((s) => W(s) <= 3).length; if (pendek / S.length > 0.3) bad.push('kalimat <=3 kata ' + pendek + '/' + S.length);
 rows.forEach((r) => { if (/\d|\b(KTP|BPS|NIK|KK|KIA)\b/.test(r[2])) bad.push('baris ' + r[0] + ': angka/singkatan belum dieja'); });
+rows.forEach((r) => { if (/jilbab|kerudung|hijab/i.test(r.join(' '))) bad.push('baris ' + r[0] + ': karakter berjilbab'); if (r[3] && r[3] !== '-' && W(r[3]) > 5) bad.push('baris ' + r[0] + ': teks layar panjang'); });
+if ((all.match(/\b(sih|kan|lho|nih|dong|deh|kok)\b/gi) || []).length > S.length / 4) bad.push('terlalu banyak partikel');
+if (n / S.length < 6) bad.push('rata-rata ' + (n / S.length).toFixed(1) + ' kata per kalimat: terpotong-potong');
+if (/kucing pun|tahukah|bayangkan|di balik|bukan sekadar/i.test(all)) bad.push('pola yang ditolak');
 console.log(rows.length + ' baris, ' + n + ' kata, perkiraan ' + (n / 1.75).toFixed(0) + ' detik sebelum jeda adegan');
 console.log(bad.length ? 'PERLU DIPERIKSA\n- ' + bad.join('\n- ') : 'Tidak ada pola yang tertangkap (belum berarti bagus)');
 process.exit(bad.length ? 1 : 0);

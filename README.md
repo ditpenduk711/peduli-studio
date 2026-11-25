@@ -8,7 +8,7 @@ Tim video AI untuk Claude Code: satu ketua (Ivo), delapan agent, skill berbahasa
 | Bagian | Lokasi |
 |---|---|
 | 8 agent (Dito, Agung, Ricky, Mandala, Ilham, Uly, Deniza, Gina) | .claude/agents |
-| 15 skill buatan sendiri | .claude/skills |
+| 16 skill buatan sendiri | .claude/skills |
 | Kantor 3D, papan progres, chat | kantor |
 | Tokoh 3D chibi pahat | pustaka/chibi3d |
 | Templat Remotion siap render | templat-video |
@@ -32,7 +32,9 @@ Skrip ini mengunduh paket npm/pip, skill dari anthropics/skills dan obra/superpo
 ## Pakai
 1. Buka kantor: klik dua kali `Buka-Kantor.cmd` (Windows) atau `node kantor/server.cjs`, lalu http://localhost:4310.
 2. Tekan "Buat video baru" dan isi brief.
-3. Buka folder ini di Claude Code, ketik: `kerjakan antrean kantor PEDULI`.
+3. Buka folder ini di Claude Code, ketik `siaga` sekali. Antrean dari kantor mulai otomatis selama sesi itu terbuka (atau ketik `kerjakan antrean kantor PEDULI`).
+
+Urutan: narasi disetujui di kantor, storyboard (gambar + voice over) disetujui di kantor, QC, render, video disetujui. Untuk Gemini/Antigravity: minta membaca `AGENTS.md` dulu. Contoh 99 gaya di galeri kantor: Lemo-Opuscar oleh Lemomo (LemoLab), CC BY 4.0, diputar dari situsnya.
 
 Chat kantor dibalas AI bila perintah `claude` tersedia dan sudah masuk; bila tidak, balasannya otomatis. Kantor memuat three.js dan font dari internet.
 

@@ -13,3 +13,10 @@
 | Judul potongan dipaksa "A atau B", pengguna bertanya "maksudnya apa?" | mengejar rangka, bukan kalimat | judul wajib kalimat utuh; tes "maksudnya apa?" |
 | Edukasi kependudukan dipahami sebagai KTP/NIK; video 1 bertumpu pada satu baris poster | menyamakan kependudukan dengan administrasi kependudukan | skill edukasi-kependudukan: uji kaitan EKSPLISIT/BERKAITAN/DIPAKSAKAN sebelum judul |
 | Narasi dan teks layar Nikah Muda terasa aneh | kalimat dipotong demi gaya, teks layar seperti slogan/pasal, tanpa melihat referensi | pelajari dulu video referensi sejenis; teks layar hanya bila membantu penonton |
+| "Hari Nusantara Itu Urusan Laut atau Penduduk?" meleset (dibuat lewat AI lain) | skill mendorong A atau B dan kaitan kependudukan; aturan terlalu longgar untuk model lain | topik ikut pengguna; rangka menurut jenis topik; cek-judul.cjs; AGENTS.md |
+| Narasi masih aneh | skill mengejar humor, rincian ganjil, potongan kalimat, dan tanda suara | naskah-video ditulis ulang: pesan inti, sebab-akibat, kalimat utuh, tes "maksudnya apa?" |
+| Latar kaku | tidak ada skill latar | latar-video |
+| Subtitle berkotak atau lebih dari satu baris | aturan lama mengizinkan 2 baris | ATURAN-KUNCI nomor 2, cek-subtitle.cjs |
+| Tidak ingin karakter perempuan berjilbab | selera belum ditulis | ATURAN-KUNCI nomor 1; dihapus dari pustaka tokoh |
+| Judul dan narasi tidak bisa dibaca/disetujui di kantor; render sebelum benar-benar bagus | persetujuan hanya di chat, QC di akhir | ruang hasil di kantor, review_naskah, gerbang qc/pra-render.json nilai 9 |
+| Gambar dan voice over baru terlihat setelah video jadi | persetujuan hanya narasi | storyboard.json: narasi, gambar, dan voice over tiap adegan disetujui sebelum animasi |

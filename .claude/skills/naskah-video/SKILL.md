@@ -1,59 +1,49 @@
 ---
 name: naskah-video
-description: Menulis dan melatih narasi video edukasi Indonesia agar terdengar seperti orang ngobrol, bukan AI. Pakai saat menulis hook, narasi, dialog, memperbaiki kalimat kaku, atau memberi tanda ekspresi suara.
+description: Menulis narasi video edukasi Indonesia yang jelas, mengalir, dan terdengar seperti orang bercerita. Pakai saat menulis hook, narasi, dialog, atau memperbaiki kalimat kaku dan aneh.
 ---
+# Narasi
+Urutan prioritas: BENAR, JELAS, MENGALIR, baru menarik. Lucu dan gaya tidak boleh mengorbankan tiga yang pertama.
+Baca peduli-tim/ATURAN-KUNCI.md.
 
-# Narasi manusia
-Bayangkan satu orang nyata di depanmu: umur, pekerjaan, dan satu hal yang ia kira benar. Narator tahu sedikit lebih dulu, bukan lebih tinggi.
+## 1. Pesan inti (jangan menulis sebelum ini selesai)
+- Topik persis permintaan pengguna; pertanyaan penonton; jawaban satu kalimat.
+- Penonton tahu apa sekarang -> tahu apa sesudahnya.
+- 3-5 fakta bersumber yang membangun jawaban, urut sebab-akibat. Sisanya dibuang.
 
-## Cara menulis (urut)
-1. Ceritakan materinya seperti voice note ke teman, tanpa melihat fakta. Boleh berantakan.
-2. Tandai bagian hidup: ragu, menyela, menggoda, membetulkan diri. Simpan.
-3. Cocokkan ke fakta; perbaiki yang salah tanpa mengubahnya jadi kalimat peraturan.
-4. Buang separuh kata sambung. Tukar kata benda abstrak dengan orang yang melakukan sesuatu.
-5. Baca keras per napas. Kalimat yang tidak akan diucapkan orang, ganti.
+## 2. Pilih SATU alur menurut topik
+| Topik | Alur |
+|---|---|
+| Hari peringatan | keadaan sebelum -> masalah -> peristiwa dan tokoh -> yang berubah -> artinya hari ini |
+| Konsep | kejadian sehari-hari -> namanya -> cara kerja -> akibat -> yang bisa dilakukan |
+| Aturan atau hak | orang punya masalah -> yang boleh/tidak -> alasannya -> langkah |
+| Data | pertanyaan -> angka -> maksudnya -> sebab -> batas data |
 
-## Alat bicara
-- Partikel dipakai seperlunya: sih, kan, kok, deh, lho, dong, nah, eh. Kira-kira satu per 2 kalimat; jangan di setiap kalimat. Acara resmi lebih sedikit.
-- Menyela diri: "Gratis. Eh, bentar, bukan cuma itu yang bikin..." Membetulkan: "seratus, eh, hampir seratus" HANYA bila angkanya benar begitu.
-- Respons pada gambar: "Lihat tuh tangannya." Ini membuat narator hadir.
-- Kalimat menggantung boleh, bila gambar yang menyelesaikannya.
-- Ritme: satu panjang mengalir, satu pendek, satu sedang. Jangan pola pendek-pendek-pendek.
-- Humor dari situasi atau reaksi, bukan lelucon tempelan. Data duka, korban, atau hukuman tidak ditertawakan.
+## 3. Tulis seperti menjelaskan ke teman yang cerdas tapi belum tahu
+- Kalimat utuh: siapa melakukan apa. Umumnya 7-14 kata, panjang bervariasi. Potongan tanpa subjek paling banyak 1 tiap 5 kalimat.
+- Tiap kalimat meneruskan yang sebelumnya: sebab, akibat, pertentangan, waktu, atau contoh. Katakan hubungannya (jadi, karena, padahal, akhirnya, waktu itu).
+- Satu kalimat satu hal baru. Istilah langsung dijelaskan. Tokoh, tahun, tempat disebut saat pertama muncul.
+- Kata konkret. "Kapal asing boleh lewat di antara pulau kita" lebih baik daripada "kedaulatan terfragmentasi".
+- Bahasa lisan rapi. Partikel (sih, kan, lho, nih) paling banyak 1 tiap 4 kalimat; sapaan tidak dicampur.
+- Kisah rekaan hanya bila memperjelas, maksimal seperempat durasi. Hari bersejarah memakai kisah aslinya.
+- Humor boleh nol. Tanda suara [chuckles] dan sejenisnya ditambahkan TERAKHIR, hanya bila ada sebab, maks 2 per menit.
+- Penutup menjawab judul, lalu satu arti untuk penonton. Tanpa kata mutiara.
 
-## Tanda ekspresi
-Letakkan di ucapan, huruf Inggris dalam kurung: [laughs] [chuckles] [sighs] [whispers] [surprised] [hesitates] [pause] [warm] [curious].
-- Wajib ada SEBAB di kalimat sebelumnya atau gambar. "[laughs] Akta kelahiran wajib..." ditolak.
-- Umumnya 1 tanda per 2-3 kalimat, tawa maksimal 2 per menit, bisik maksimal 1. Kekehan pendek biasanya lebih manusiawi daripada tawa.
-- Setelah tanda, kalimat ikut berubah nada; jangan kembali datar seketika.
-- Beri satu baris arahan per paragraf: bicara kepada siapa, maunya apa, tempo, kata yang dijatuhkan.
+## Ditolak
+Benda atau hewan ditanya tanpa alasan; metafora beruntun; ringkasan pasal; tiga benda berderet; bukan X tapi Y; tanya-jawab sendiri lebih dari sekali; tahukah, bayangkan, mari, di balik, perjalanan, jendela, bukan sekadar; kalimat yang baru dimengerti setelah melihat gambar; topik dibelokkan.
 
-## Pola AI yang ditolak
-bukan X tapi Y (atau X, bukan Y); tanya lalu langsung jawab berulang; tiga kata benda berderet; kata mutiara penutup; "di balik", "bayangkan", "tahukah", "mari", "perjalanan", "jendela", "bukan sekadar", "karena pada akhirnya"; semua kalimat punya panjang mirip; membuka paragraf dengan sambungan resmi; ajakan umum "mulai dari diri sendiri"; puisi palsu dari kalimat tiga kata; slang dijejalkan supaya terlihat santai.
+## Contoh (pelajari caranya; fakta tetap dicek ulang)
+Ditolak: "Soal rasa kue, kucing pun ditanya. Dia diam, dikira mau." Pendengar tidak tahu sedang membahas apa.
+Jelas: "Wulan baru tujuh belas tahun, tapi keluarganya sudah menyiapkan pernikahan. Semua sibuk memilih tanggal. Belum ada yang bertanya apakah Wulan mau."
+Ditolak: "Laut itu urusan siapa? Ombak, atau penduduk?"
+Jelas: "Dulu, laut di antara pulau-pulau Indonesia belum semuanya diakui sebagai wilayah kita. Lalu pada tiga belas Desember seribu sembilan ratus lima puluh tujuh, Perdana Menteri Djuanda mengumumkan bahwa laut itu bagian dari Indonesia. Tanggal itulah yang sekarang kita peringati sebagai Hari Nusantara."
 
-## Sebelum-sesudah (pelajari perubahan, jangan salin)
-Kaku: "Bonus demografi bukan hadiah otomatis, melainkan kesempatan yang harus dikelola."
-Hidup: "Dengar kata bonus, langsung senang, kan? [chuckles] Sebentar... ini yang kerja siapa dulu."
-Kaku: "Setiap penduduk berhak memperoleh pelayanan yang sama."
-Hidup: "Kamu datang pakai sandal, yang sebelah pakai jas. Di loket ya sama. Nomor berapa, Pak? Giliran siapa?"
-Kaku: "Segera laporkan kelahiran paling lambat 60 hari."
-Hidup: "Ngurus bayi baru, tidur aja susah. [sighs] Tapi aktanya jangan ikut tertunda, ya. Enam puluh hari itu cepat, lho."
-
-## Tiga putaran wajib
-Putaran A tulis; B jadi pendengar: coret yang terdengar iklan, guru, peraturan, atau AI; C baca hanya ucapan tanpa judul dan gambar. Simpan 3 perubahan terbesar sebagai bukti.
-Nilai 1-5: seperti bicara, tegangan, ritme, emosi punya sebab, fakta. Di bawah 4 ditulis ulang, bukan diberi partikel tambahan.
+## 4. Empat pemeriksaan (tulis hasilnya di bawah naskah)
+1. Buta: baca ucapan saja. Siapa, apa, kapan, kenapa terjawab? Yang memancing "maksudnya apa?" ditulis ulang.
+2. Sambung: tulis hubungan tiap kalimat dengan sebelumnya. Yang kosong diganti atau dibuang.
+3. Buang: hapus tiap kalimat bergantian. Arti tidak berubah = buang.
+4. Ulang: tulis isi dalam satu kalimat; harus sama dengan jawaban inti.
+Pemeriksa harus agen atau percakapan lain dan menyebut kalimat terlemah beserta perbaikannya; "semua bagus" tidak diterima. Dua kali gagal = tulis dari nol dengan alur lain.
 
 ## Format
-Arahan paragraf, lalu: nomor | tokoh | ucapan + tanda | teks layar maks 5 kata | emosi | gambar | fakta. Angka dan singkatan ditulis menurut bunyi. Topik terdengar sebelum detik 8. Klaim inti TERVERIFIKASI. cek-naskah.cjs adalah bantuan, bukan nilai rasa.
-
-## Pelajaran latihan putaran 1
-- Yang membuat hidup: rincian ganjil yang spesifik (sisa kuah di mulut, rice cooker salah alamat), orang yang ketahuan, dan akhir yang tidak menasihati. Cari satu rincian seperti itu per paragraf.
-- Lucu harus tetap lucu saat mata tertutup; bila bergantung gambar, beri petunjuk di ucapan.
-- Jangan menutup dua paragraf berturut-turut dengan pertanyaan.
-- Informasi masuk lewat gangguan: tokoh salah paham, diberi tahu, lalu bereaksi. Satu paragraf satu fakta. Istilah resmi muncul SETELAH artinya dipahami.
-- Edukasi harus tetap terjawab: cerita menarik tanpa penjelasan = gagal. Pendengar harus bisa mengulang faktanya dalam satu kalimat.
-
-## Pelajaran latihan putaran 2
-- Berhasil: tokoh melakukan salah paham yang bisa DILIHAT (memecah celengan, menghitung pakai jari), fakta datang lewat orang lain, penutup kembali ke benda awal.
-- Penjelasan angka dipecah: contoh kecil dulu, angka, lalu artinya. Dua angka dalam satu kalimat melemahkan (kasus rasio). Definisi yang belum terverifikasi tetap tidak boleh dipakai demi cerita.
-- Jangan memakai pola "salah paham lalu diberi tahu" di semua paragraf; selingi dengan pengamatan, percakapan, atau akibat.
+Pesan inti; arahan suara per paragraf; tabel: nomor | tokoh | ucapan | teks layar | emosi | gambar | fakta. Teks layar bawaannya "-". Angka dan singkatan dieja. Topik terdengar sebelum detik 8; 1,75 kata/detik. Jalankan cek-naskah.cjs.

@@ -15,6 +15,8 @@ Tentang PENDUDUK dan perubahannya, serta dampaknya pada kehidupan: jumlah, umur,
 | Mobilitas | urbanisasi, pekerja migran, pemudik, pengungsi |
 | Persebaran dan lingkungan | kepadatan, desa kosong, daerah terpencil |
 
+Skill ini HANYA dipakai bila pengguna meminta kaitan kependudukan. Hari peringatan dan topik lain tidak dibelokkan.
+
 ## Uji kaitan (wajib, tulis di 00-arahan.md)
 1. Kutip teks sumber apa adanya. Sumber memang menyebut topik itu? Tulis EKSPLISIT, BERKAITAN (perlu fakta penghubung bersumber), atau DIPAKSAKAN.
 2. Rantai sebab: hak X -> perubahan pada penduduk Y -> akibat yang dialami orang. Kalau salah satu mata rantai tanpa sumber, jangan dibuat.

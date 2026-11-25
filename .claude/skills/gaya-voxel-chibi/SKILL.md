@@ -38,10 +38,12 @@ Mesin: pustaka/chibi3d (tokoh halus) dan templat-video. Untuk gaya kotak, buat d
 ## Bentuk yang lolos
 - Kepala: sudut membulat jelas (radius 22-28% lebar), pipi lebih lebar dari dahi. Bukan kotak polos.
 - Rambut: massa kulit kepala, poni bertumpuk, samping, dan belakang SALING menyambung; ujung meruncing. Papan persegi yang menggantung ditolak.
-- Kerudung: satu kubah lembut mengikuti kepala, tepi wajah oval tipis, lipatan turun ke bahu dan dada. Bingkai empat batang ditolak; telinga, anting, dan rambut dihapus bila tertutup.
+- Tanpa jilbab (ATURAN-KUNCI); ragamkan potongan rambut.
 - Kacamata mengikuti muka dan gagang menuju telinga. Aksesori harus punya titik tempel.
 - Tangan saling bertemu dengan benda yang dipegang; bayi ditopang di kepala dan badan.
 - Tubuh punya garis gerak; dua tangan simetris terkepal sebagai pose bawaan ditolak.
 - Render badan abu-abu polos dulu: siluet, proporsi, sambungan. Baru warna dan tekstur.
 ## Periksa tiap tokoh
 Depan, tiga perempat, samping, belakang, dekat, dan 3 ekspresi. Cari celah, tembus, dan bagian melayang dari tiap sudut sebelum masuk adegan. Terapkan komposisi-video dan gerak-video.
+
+Wajib: peduli-tim/ATURAN-KUNCI.md dan latar-video.

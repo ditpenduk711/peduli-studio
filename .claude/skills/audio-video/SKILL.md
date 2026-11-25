@@ -45,3 +45,29 @@ Buat 3 pengambilan yang niatnya berbeda (menggoda, penasaran, peduli), pilih per
 Sulafat dan Zubenelgenubi DITERIMA, Achird tidak disebut. Bawaan: Sulafat untuk cerita hangat, Zubenelgenubi untuk santai/lucu. Style "amused, relaxed storytelling", tiga potongan panjang, tempo 1,7-1,75 kata/detik diterima; jangan dipercepat demi angka. Durasi naskah dihitung 1,75 kata/detik.
 
 Musik dan efek bebas pakai contoh ada di contoh/musik (buat_audio.py membuatnya dari nol).
+
+## Memilih suara (field suara pada job; pilihan pengguna menang)
+| Bentuk | Aturan |
+|---|---|
+| Narator di luar cerita ("dia", menjelaskan) | boleh perempuan atau laki-laki, apa pun tokohnya; mulut tokoh TIDAK bergerak mengikuti narator |
+| Tokoh bercerita ("saya/aku") | suara harus cocok dengan jenis kelamin, umur, dan sifat tokoh itu |
+| Dialog | tiap tokoh suara sendiri yang cocok; narator berbeda jelas dari semua tokoh |
+| Kutipan pendek dalam narasi | narator boleh menyampaikan dengan "katanya"; kalau tokohnya terlihat bicara, pakai suara tokoh |
+- Satu narator sepanjang video, sama di seluruh seri. perempuan = Sulafat, laki-laki = Zubenelgenubi (disetujui pengguna); suara lain diminta dinilai dulu.
+- suara "tim": pilih menurut isi (hangat/cerita = Sulafat, santai/lucu = Zubenelgenubi). Bila hanya ada satu tokoh utama yang tampil hampir sepanjang video, utamakan suara yang selaras dengannya supaya tidak disangka tokoh itu bicara.
+- Tokoh anak: jangan memakai suara dewasa yang dipaksa kecil; pakai narator.
+
+## Musik (field musik pada job)
+- Mandala membuat 2 pilihan BEDA rasa, bernama audio/musik-a.mp3 dan musik-b.mp3, tersedia saat storyboard supaya pengguna mendengar dan memilih; juga campuran 20 detik bersama voice over.
+- Peta musik ikut naskah: pembuka, penjelasan, titik balik, penutup. Minimal satu perubahan berarti (alat bertambah/berkurang, kunci, atau hening) tepat di titik balik; putaran yang sama terus ditolak. Tempo mengikuti ucapan.
+- Tanpa lirik. Turun otomatis saat bicara, 14-20 dB di bawah suara; naik di jeda. Awal dan akhir dibentuk, bukan terpotong.
+- Sumber: lagu berlisensi yang boleh dipakai pada media sosial (simpan tautan, pembuat, lisensi di audio/LISENSI.md), atau buatan sendiri dengan sampel alat musik asli berlisensi. Bunyi sintetis gelombang polos hanya untuk contoh, tidak untuk final.
+- Duka, korban, sejarah: tidak memakai musik ceria. Musik daerah dipakai hanya bila sesuai tempatnya dan bersumber.
+- Rasa musik TIDAK DINILAI oleh AI; pengguna yang memutuskan.
+
+## Dialog banyak tokoh
+Sebelum merekam, tulis audio/pemeran.json: [{"tokoh":"Narator","suara":"Sulafat","umur":"...","sifat":"...","disetujui":true}, ...]. Segmen memakai field "v" (suara) dan "tokoh"; alat menolak bila satu tokoh memakai dua suara.
+- Tokoh yang jenis kelaminnya sama harus beda jelas: warna, umur, tempo. Uji: tutup mata, siapa bicara? Tidak boleh dua tokoh memakai suara yang sama.
+- Baru Sulafat dan Zubenelgenubi yang disetujui. Suara lain dipilih dari daftar resmi Gemini, dibuat contoh 5 detik dari kalimat aslinya, disimpan sebagai contoh-suara/<tokoh>.wav, dan disetujui pengguna di kantor sebelum dialog penuh.
+- Idealnya narator + 2-3 tokoh. Empat tokoh boleh bila masing-masing punya peran; yang hanya satu kalimat disampaikan narator.
+- Panggilan: tiap segmen satu permintaan. Hitung dulu terhadap kuota akun; gabungkan kalimat berurutan tokoh yang sama. Kuota kurang = berhenti dan beri tahu, jangan diam-diam mengganti mesin atau suara.

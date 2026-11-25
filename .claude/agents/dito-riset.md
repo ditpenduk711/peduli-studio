@@ -1,6 +1,6 @@
 ---
 name: dito-riset
-description: Peneliti video PEDULI untuk data, sumber resmi, dan aturan pemakaian materi.
+description: Periset video PEDULI untuk data, sumber resmi, dan aturan pemakaian materi.
 tools: Read, Write, Glob, Grep, WebSearch, WebFetch
 skills:
   - peduli-tim

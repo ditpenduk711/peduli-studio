@@ -12,7 +12,7 @@ Niat (mata) 2-4 frame, kepala, antisipasi 3-6, badan, tangan menyusul, lewat sed
 - Jalan mengikuti jarak, bukan sinus lepas; kontak, turun, lewat, naik. Kaki tumpu diam terhadap lantai.
 - Diam tetap hidup: napas, kedip 3-5 detik tak seragam, pindah tumpuan. Jangan semua tokoh seirama.
 - Wajah berubah SEBELUM tangan. Emosi ditahan cukup lama untuk dibaca.
-- Mulut mengikuti amplitudo audio, berhenti saat jeda. Narator tidak menggerakkan mulut tokoh.
+- Mulut mengikuti amplitudo audio, berhenti saat jeda. Narator tidak menggerakkan mulut tokoh; suara tokoh mengikuti audio-video "Memilih suara".
 
 ## Timing
 Aksen visual jatuh 1-3 frame sebelum kata kunci. Tiap 2-3 detik ada perubahan berarti (aksi, informasi, bidikan), bukan goyangan. Kamera hanya bergerak bila mengikuti, mengungkap, atau mendekatkan emosi.

@@ -1,7 +1,7 @@
 // Kantor PEDULI di localhost. Jalankan: node kantor/server.cjs
 const http = require('http'), fs = require('fs'), path = require('path'), os = require('os');
 const { spawn, spawnSync } = require('child_process');
-const P = require('./papan.cjs'), PORT = +process.env.PORT || 4310;
+const H = require('./hasil.cjs'), P = require('./papan.cjs'), PORT = +process.env.PORT || 4310;
 const HOSTS = [`localhost:${PORT}`, `127.0.0.1:${PORT}`];
 const hasClaude = () => spawnSync(process.platform === 'win32' ? 'where' : 'which', ['claude']).status === 0;
 
@@ -59,6 +59,11 @@ http.createServer(async (q, r) => {
   try {
     if (q.method === 'GET' && q.url === '/') { r.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' }); return r.end(page()); }
     if (q.method === 'GET' && q.url === '/api/events') { r.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store' }); r.write(msg()); clients.add(r); q.on('close', () => clients.delete(r)); return; }
+    if (q.method === 'GET' && q.url === '/api/siaga') return json(200, { aktif: H.siaga() });
+    if (q.method === 'GET' && /^\/gaya\/[a-z0-9-]+\.jpg$/.test(q.url)) { const f = path.join(__dirname, q.url); if (!fs.existsSync(f)) return json(404, {}); r.writeHead(200, { 'content-type': 'image/jpeg' }); return r.end(fs.readFileSync(f)); }
+    if (q.method === 'GET' && q.url === '/api/hasil') return json(200, H.semua());
+    if (q.method === 'GET' && q.url.startsWith('/api/hasil/')) return json(200, H.satu(q.url.slice(11)));
+    if ((q.method === 'GET' || q.method === 'HEAD') && q.url.startsWith('/berkas/')) return H.kirim(q, r);
     if (q.method !== 'POST') return json(404, { error: 'tidak ada' });
     if (!HOSTS.map((h) => 'http://' + h).includes(q.headers.origin) || !/^application\/json/.test(q.headers['content-type'] || '')) return json(403, { error: 'asal ditolak' });
     q.setEncoding('utf8');

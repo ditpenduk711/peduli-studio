@@ -1,6 +1,6 @@
 ---
 name: agung-naskah
-description: Penulis naskah video PEDULI untuk hook, narasi, dan dialog.
+description: Penulis Naskah video PEDULI untuk hook, narasi, dan dialog.
 tools: Read, Write, Edit, Glob, Grep, Bash
 skills:
   - peduli-tim

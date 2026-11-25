@@ -1,6 +1,6 @@
 ---
 name: mandala-audio
-description: Penata audio video PEDULI untuk voice over, musik, efek suara, dan mixing.
+description: Penata Suara video PEDULI untuk voice over, musik, efek suara, dan mixing.
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
 skills:
   - peduli-tim

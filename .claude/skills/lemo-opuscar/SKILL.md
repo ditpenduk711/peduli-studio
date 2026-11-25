@@ -11,3 +11,5 @@ Panduan diunduh pasang.ps1/pasang.sh ke pustaka/lemo-opuscar: styles/README.md (
 4. Teks 1080x1920 memakai komposisi-video, bukan ukuran 16:9 mereka.
 Batas: tokoh berakting dekat bukan kekuatan sebagian besar gaya 3D-nya (Memphis Diorama melarangnya). Untuk tokoh berakting pakai gaya-3d-pahat.
 Lisensi: panduan CC BY-NC 4.0, kode MIT, film yang dibuat milik pembuat. Non-komersial.
+
+Wajib: peduli-tim/ATURAN-KUNCI.md dan latar-video.

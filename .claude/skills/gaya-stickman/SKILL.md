@@ -16,7 +16,7 @@ Pose: diam, jelas, tunjuk, kaget, pikir, lemas, girang. mood: biasa, senang, kag
 ## Panggung
 - Satu warna latar, satu bidang lantai, 2-4 benda bergaris setebal tokoh.
 - Tokoh 45-65% tinggi layar. Pada 9:16 sisakan 15% atas dan 25% bawah dari teks.
-- Teks besar maksimal 5 kata. Data selalu dengan sumber kecil di layar.
+- Teks layar mengikuti ATURAN-KUNCI nomor 7. Data selalu dengan sumber kecil di layar.
 
 ## Contoh struktur untuk 30 detik (sesuaikan dengan durasi job)
 0-2 masalah terlihat; 2-8 salah paham; 8-20 penjelasan dengan 2-3 gambaran; 20-27 balikan lucu; 27-30 satu ajakan.
@@ -37,3 +37,5 @@ Pose baru ditambah lewat POSES; render lembar pose sebelum dipakai.
 - Latar sederhana bukan kosong: 3 lapis nilai warna, tekstur halus, dan 2 benda yang membantu cerita. Tebal garis latar 40-60% garis tokoh.
 - Jumlah orang dalam data harus dihitung tepat dan diuji di kode; warna kelompok diberi label.
 Terapkan komposisi-video dan gerak-video. Render lembar ekspresi serta 9 frame gerak sebelum adegan.
+
+Wajib: peduli-tim/ATURAN-KUNCI.md dan latar-video.

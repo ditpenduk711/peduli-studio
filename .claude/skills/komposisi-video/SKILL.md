@@ -11,7 +11,7 @@ Sebelum menggambar, tulis per adegan: subjek utama, hal kedua, arah mata, dan ap
 - Subjek dan reaksi mengisi 55-75% tinggi. Wajah pembicara minimal 18% tinggi; mata di y 520-850.
 - Jangan komposisi lanskap lalu menambah langit-langit dan lantai. Susun vertikal: depan, subjek, latar; sudut kamera atau tinggi tokoh mengisi ruang.
 - Bidang datar menerus tidak boleh lebih dari 25% layar kecuali disiapkan untuk teks, dan teksnya harus terlihat di gambar contoh.
-- Subtitle maksimal 2 baris, 54-70 px, pada y 1280-1480; jangan menutup wajah, tangan aktif, atau bukti.
+- Subtitle tepat 1 baris tanpa latar (peduli-tim/ATURAN-KUNCI.md nomor 2), 54-64 px, pada y 1300-1400; jangan menutup wajah, tangan aktif, atau bukti.
 
 ## Kedalaman dan fokus
 Satu titik paling kontras, pada subjek. Pisahkan kepala dari latar dengan nilai terang-gelap, bukan hanya warna. Hindari jendela tepat di belakang wajah, tokoh menutup tokoh, garis latar menembus kepala, dan bayangan bergaris yang lebih kuat dari subjek.

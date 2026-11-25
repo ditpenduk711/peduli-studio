@@ -12,7 +12,7 @@ export const neg = (f: SDF): SDF => (x, y, z) => -f(x, y, z);
 const add = (p: THREE.Object3D, g: THREE.BufferGeometry, m: THREE.Material, q: V = [0, 0, 0]) => { const o = new THREE.Mesh(g, m); o.position.set(...q); o.castShadow = o.receiveShadow = true; p.add(o); return o; };
 const shared: Record<string, THREE.BufferGeometry> = {};
 const once = (k: string, f: () => THREE.BufferGeometry) => shared[k] || (shared[k] = f());
-export type Look = {skin: string; hair: string; top: string; topMap?: THREE.Texture; bottom: string; head: 'kuncir' | 'kerudung' | 'peci' | 'sanggul'; skirt: boolean; brow?: string; mustache?: boolean; collar?: string; acc?: string; scale?: number};
+export type Look = {skin: string; hair: string; top: string; topMap?: THREE.Texture; bottom: string; head: 'kuncir' | 'peci' | 'sanggul'; skirt: boolean; brow?: string; mustache?: boolean; collar?: string; acc?: string; scale?: number};
 export type Mouth = 'senyum' | 'buka' | 'o' | 'datar' | 'sedih';
 export type Char = ReturnType<typeof makeChar>;
 const eyeTex = (iris: string) => tex(512, 512, (c) => { c.fillStyle = '#fffdf8'; c.fillRect(0, 0, 512, 512); const q = c.createRadialGradient(256, 290, 10, 256, 256, 150); q.addColorStop(0, '#b5733f'); q.addColorStop(0.7, iris); q.addColorStop(1, '#200e07'); c.fillStyle = q; c.beginPath(); c.arc(256, 256, 146, 0, 7); c.fill(); c.fillStyle = '#0b0504'; c.beginPath(); c.arc(256, 256, 84, 0, 7); c.fill(); c.fillStyle = '#fff'; c.beginPath(); c.arc(204, 190, 40, 0, 7); c.fill(); c.globalAlpha = 0.85; c.beginPath(); c.arc(312, 318, 19, 0, 7); c.fill(); });
@@ -30,7 +30,7 @@ export function makeChar(L: Look) {
   add(torso, tg, top);
   if (L.collar) for (const s of [-1, 1]) { const c = add(torso, once('kerah', () => mesh(ell([0, 0, 0], [0.16, 0.05, 0.1]), [-0.2, -0.1, -0.15], [0.2, 0.1, 0.15], 24)), clay(L.collar), [s * 0.12, 0.62, 0.2]); c.rotation.set(0.7, s * 0.4, s * -0.5); }
   if (L.acc) { const t = add(torso, once('dasi', () => mesh(smin(0.03, ell([0, 0, 0], [0.06, 0.05, 0.05]), cap([0, -0.04, 0], [0, -0.3, 0.02], 0.05, 0.085)), [-0.15, -0.45, -0.12], [0.15, 0.1, 0.15], 34)), clay(L.acc), [0, 0.54, 0.27]); t.rotation.x = -0.1; }
-  for (let i = 0; i < 3; i++) if (!L.acc && L.head !== 'kerudung') add(torso, new THREE.SphereGeometry(0.028, 14, 10), gloss('#fff3d8'), [0, 0.42 - i * 0.17, 0.268 + i * 0.022]);
+  for (let i = 0; i < 3; i++) if (!L.acc) add(torso, new THREE.SphereGeometry(0.028, 14, 10), gloss('#fff3d8'), [0, 0.42 - i * 0.17, 0.268 + i * 0.022]);
   // kepala
   const head = new THREE.Group(); head.position.set(0, 0.72, 0.02); torso.add(head);
   const HY = 0.5, hi = new THREE.Group(); hi.position.y = HY; head.add(hi);
@@ -65,11 +65,6 @@ export function makeChar(L: Look) {
     if (L.head === 'kuncir') { const k = new THREE.Group(); k.position.set(0.4, 0.5, -0.22); k.rotation.set(0.25, 0.5, 0.35); k.scale.setScalar(1.25); hi.add(k); add(k, once('kuncir', () => mesh(smin(0.1, ell([0, 0, 0], [0.16, 0.16, 0.14]), cap([0, 0, -0.04], [0.1, -0.42, -0.24], 0.17, 0.15), cap([0.1, -0.42, -0.24], [0.2, -0.78, -0.12], 0.15, 0.03)), [-0.35, -0.95, -0.55], [0.45, 0.3, 0.3], 60)), hair); const pt = add(k, new THREE.TorusGeometry(0.15, 0.045, 12, 30), gloss('#ffd23f')); pt.rotation.x = 1.1; (g as unknown as {kun: THREE.Group}).kun = k; }
     else { add(hi, once('sanggul', () => mesh(smin(0.06, ell([0, 0, 0], [0.3, 0.26, 0.24]), ell([0, 0.04, -0.1], [0.2, 0.3, 0.2])), [-0.4, -0.4, -0.4], [0.4, 0.4, 0.4], 50)), hair, [0, 0.6, -0.34]); for (let i = 0; i < 5; i++) add(hi, new THREE.SphereGeometry(0.06, 16, 12), gloss('#ff6f91'), [0.3 + Math.cos(i * 1.26) * 0.075, 0.6 + Math.sin(i * 1.26) * 0.075, -0.12]); add(hi, new THREE.SphereGeometry(0.045, 16, 12), gloss('#ffd23f'), [0.3, 0.6, -0.09]); for (const s of [-1, 1]) add(hi, new THREE.SphereGeometry(0.05, 16, 12), gloss('#ffd23f'), [s * 0.62, -0.24, 0.02]); }
   }
-  if (L.head === 'kerudung') {
-    const hole = smin(0.12, ell([0, 0.02, 0.72], [0.47, 0.46, 0.5]), ell([0, -0.22, 0.7], [0.38, 0.25, 0.42]));
-    add(hi, once('krd', () => mesh(smax(0.05, smin(0.1, off(skull, 0.055), off(ell([0, 0.05, -0.03], [0.62, 0.63, 0.59]), 0.03), ell([-0.56, -0.06, -0.06], [0.2, 0.28, 0.2]), ell([0.56, -0.06, -0.06], [0.2, 0.28, 0.2]), ell([0, -0.4, 0], [0.5, 0.34, 0.48]), ell([0, -0.72, 0.02], [0.56, 0.3, 0.44]), ell([0.02, -0.86, 0.24], [0.3, 0.22, 0.2])), neg(hole)), [-0.95, -1.2, -0.85], [0.95, 0.85, 0.8], 116)), clay(L.hair, {roughness: 0.9, sheen: 0.7, sheenColor: col('#ffffff')}));
-    const pin = add(hi, new THREE.SphereGeometry(0.05, 18, 14), gloss('#ffd23f'), [0.08, -0.6, 0.5]); pin.scale.z = 0.6;
-  }
   if (L.head === 'peci') {
     add(hi, once('rbp', () => mesh(smax(0.05, off(ell([0, 0.06, -0.02], [0.59, 0.59, 0.55]), 0.025), smax(0.05, neg(ell([0, -0.16, 0.52], [0.62, 0.62, 0.5])), (x, y) => -(y + 0.2))), [-0.8, -0.35, -0.75], [0.8, 0.8, 0.75], 80)), clay('#2a1d18'));
     add(hi, once('peci', () => mesh(smax(0.05, (x, y, z) => Math.hypot(x / 0.6, z / 0.57) * 0.58 - 0.58 + (y - 0.25) * 0.1, smax(0.04, (x, y) => y - 0.8, (x, y) => 0.36 - y)), [-0.75, 0.2, -0.75], [0.75, 0.95, 0.75], 70)), clay('#17181f', {roughness: 0.8, sheen: 0.8, sheenColor: col('#5c6480')}));
@@ -92,7 +87,7 @@ export function makeChar(L: Look) {
   const face = (o: {mouth?: Mouth; lx?: number; ly?: number; blink?: number; brow?: number; tilt?: number}) => {
     const m = o.mouth || 'senyum'; for (const k in mouths) mouths[k as Mouth].visible = k === m;
     const b = Math.max(0, Math.min(1, o.blink || 0)); for (const e of eyes) { e.t.offset.set(-(o.lx || 0) * 0.16, -(o.ly || 0) * 0.16); e.lid.rotation.x = -1.0 + b * 1.45 + Math.max(0, -(o.ly || 0)) * 0.22; }
-    brows.forEach((q, i) => { const s = i ? 1 : -1; q.position.y = (L.head === 'kerudung' || L.head === 'peci' ? 0.235 : 0.3) + (o.brow || 0) * (L.head === 'kerudung' || L.head === 'peci' ? 0.03 : 0.07); q.position.z = L.head === 'kerudung' || L.head === 'peci' ? 0.51 : 0.5; q.rotation.z = s * -(o.tilt || 0) * 0.35; });
+    brows.forEach((q, i) => { const s = i ? 1 : -1; q.position.y = (L.head === 'peci' ? 0.235 : 0.3) + (o.brow || 0) * (L.head === 'peci' ? 0.03 : 0.07); q.position.z = L.head === 'peci' ? 0.51 : 0.5; q.rotation.z = s * -(o.tilt || 0) * 0.35; });
   };
   setArm(0, [-0.5, -0.1, 0.1]); setArm(1, [0.5, -0.1, 0.1]); face({});
   return {g, body, torso, head, setArm, face};

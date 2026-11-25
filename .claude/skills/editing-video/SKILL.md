@@ -9,10 +9,11 @@ Audio menjadi garis waktu. Potong karena ada informasi, reaksi, atau arah pandan
 - Detik pertama memperlihatkan masalah; tidak mulai dari hitam atau logo.
 - Bidikan umumnya 1,2-3,5 detik. Yang emosional boleh ditahan bila wajah berubah.
 - J-cut atau L-cut 4-10 frame untuk percakapan; potong saat bergerak untuk aksi; potong keras sebagai bawaan. Transisi hias maksimal satu jenis dan harus bermakna.
-- Subtitle dipisah menurut makna, 1-2 baris, muncul dengan suaranya. Jangan membaca dua teks berbeda bersamaan; teks layar dan subtitle disatukan bila sama.
+- Subtitle tepat 1 baris tanpa latar (ATURAN-KUNCI nomor 2), dipisah menurut makna, muncul dengan suaranya. Jangan membaca dua teks berbeda bersamaan; teks layar dan subtitle disatukan bila sama.
 - Angka tampil saat disebut dan tinggal sampai selesai dibaca; sumber kecil tetap terbaca.
 
 ## Pemeriksaan
+0. cek-subtitle.cjs lolos, lalu lihat subtitle terpanjang di gambar.
 1. Tonton deret 1 gambar per detik tanpa suara: alurnya jelas?
 2. Baca subtitle saja: materinya lengkap?
 3. Cek frame sebelum/sesudah setiap potongan.

@@ -12,7 +12,7 @@ function dunia() {
   const s = new THREE.Scene(); s.background = new THREE.Color('#f3d9b8');
   const add = (g: THREE.BufferGeometry, m: THREE.Material, y = 0, z = 0) => { const o = new THREE.Mesh(g, m); o.position.set(0, y, z); o.receiveShadow = true; s.add(o); };
   add(new THREE.BoxGeometry(16, 0.3, 12), clay('#c98a5c'), -0.15); add(new THREE.BoxGeometry(16, 8, 0.3), clay('#f4dfb6'), 3.8, -2.4); add(new THREE.BoxGeometry(16, 1.3, 0.2), clay('#2e8f86'), 0.65, -2.2);
-  const a = makeChar({skin: '#c98856', hair: '#2f9d93', top: '#f6b04a', bottom: '#8a4a7a', head: 'kerudung', skirt: true, brow: '#3a2418'});
+  const a = makeChar({skin: '#c98856', hair: '#2b1a14', top: '#f6b04a', bottom: '#8a4a7a', head: 'sanggul', skirt: true, brow: '#3a2418'});
   const b = makeChar({skin: '#a9683c', hair: '#2a1d18', top: '#3b6fe0', bottom: '#3a3f52', head: 'peci', skirt: false, mustache: true, scale: 1.04});
   a.g.position.x = -0.8; b.g.position.x = 0.8; a.g.rotation.y = 0.35; b.g.rotation.y = -0.35; const cat = makeCat(); cat.g.position.set(0, 0, 1.1); s.add(a.g, b.g, cat.g);
   const key = new THREE.DirectionalLight('#ffe0b5', 2.6); key.position.set(-4.2, 7.2, 6.5); key.castShadow = true; key.shadow.mapSize.set(2048, 2048); Object.assign(key.shadow.camera, {left: -4, right: 4, top: 6, bottom: -3, near: 1, far: 22}); key.shadow.radius = 6; key.shadow.normalBias = 0.03;

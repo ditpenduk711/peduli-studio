@@ -1,4 +1,5 @@
 // node suara-gemini.cjs segmen.json keluar.wav [Suara]
+// segmen dialog: tambah "tokoh":"Ibu","v":"NamaSuara"
 // segmen: [{"style":"teasing, quick","t":"Teks [chuckles] lanjut.","j":0.35}]  j = jeda sesudah (detik)
 // Kunci: variabel lingkungan GEMINI_API_KEY milik pengguna. Tidak pernah ditampilkan atau disimpan.
 const fs = require('fs'), { execFileSync } = require('child_process');
@@ -29,9 +30,10 @@ function pcm(b) { // ambil isi 'data' dari WAV
   throw Error('WAV tanpa data');
 }
 async function buat(s, key) {
+  const suara = s.v || voice;
   const part = { text: s.t }; if (s.style) part.speech_metadata = { style: s.style };
   for (let k = 0; ; k++) {
-    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, { method: 'POST', signal: AbortSignal.timeout(90000), headers: { 'x-goog-api-key': key, 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ role: 'user', parts: [part] }], generationConfig: { responseModalities: ['AUDIO'], speechConfig: { voiceConfig: { voice } } } }) });
+    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, { method: 'POST', signal: AbortSignal.timeout(90000), headers: { 'x-goog-api-key': key, 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ role: 'user', parts: [part] }], generationConfig: { responseModalities: ['AUDIO'], speechConfig: { voiceConfig: { voice: suara } } } }) });
     if (r.ok) { const d = (await r.json()).candidates?.[0]?.content?.parts?.find((p) => p.inlineData)?.inlineData?.data; if (!d) throw Error('Tidak ada audio dalam jawaban'); return pcm(Buffer.from(d, 'base64')); }
     const m = (await r.text()).split(key).join('***').slice(0, 300);
     if ((r.status !== 429 && r.status < 500) || k >= 3) throw Error(`HTTP ${r.status}: ${m}`);
@@ -39,12 +41,14 @@ async function buat(s, key) {
   }
 }
 (async () => {
-  const seg = JSON.parse(fs.readFileSync(inp, 'utf8')).map((s) => ({ ...siapkan(s), j: s.j ?? 0.3 }));
+  const seg = JSON.parse(fs.readFileSync(inp, 'utf8')).map((s) => ({ ...siapkan(s), j: s.j ?? 0.3, v: s.v, tokoh: s.tokoh }));
+  const peran = {}; for (const s of seg) if (s.tokoh) { const v = s.v || voice; if (peran[s.tokoh] && peran[s.tokoh] !== v) throw Error('Tokoh ' + s.tokoh + ' memakai dua suara'); peran[s.tokoh] = v; }
+  const pakai = Object.values(peran); if (new Set(pakai).size !== pakai.length) throw Error('Dua tokoh memakai suara yang sama');
   if (process.argv.includes('--cek')) { console.log(JSON.stringify(seg, null, 1)); return; }
   const key = kunci();
   if (!key) { console.error('GEMINI_API_KEY belum dipasang'); process.exitCode = 3; return; }
   const A = [], M = []; let n = 0;
-  for (const s of seg) { const a = await buat(s, key), z = Buffer.alloc(Math.round(SR * s.j) * 2); M.push({ t: s.t, awal: +(n / 2 / SR).toFixed(3), lama: +(a.length / 2 / SR).toFixed(3) }); A.push(a, z); n += a.length + z.length; }
+  for (const s of seg) { const a = await buat(s, key), z = Buffer.alloc(Math.round(SR * s.j) * 2); M.push({ t: s.t, tokoh: s.tokoh, v: s.v || voice, awal: +(n / 2 / SR).toFixed(3), lama: +(a.length / 2 / SR).toFixed(3) }); A.push(a, z); n += a.length + z.length; }
   const d = Buffer.concat(A), h = Buffer.alloc(44);
   h.write('RIFF', 0); h.writeUInt32LE(36 + d.length, 4); h.write('WAVEfmt ', 8); h.writeUInt32LE(16, 16); h.writeUInt16LE(1, 20); h.writeUInt16LE(1, 22); h.writeUInt32LE(SR, 24); h.writeUInt32LE(SR * 2, 28); h.writeUInt16LE(2, 32); h.writeUInt16LE(16, 34); h.write('data', 36); h.writeUInt32LE(d.length, 40);
   fs.writeFileSync(out, Buffer.concat([h, d])); fs.writeFileSync(out.replace(/\.wav$/, '.json'), JSON.stringify({ model: MODEL, voice, M }, null, 1));

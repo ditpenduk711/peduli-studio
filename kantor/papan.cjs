@@ -28,8 +28,13 @@ function update(c, id, d) { check(c, d); write((x) => { if (!Object.hasOwn(x[c],
 module.exports = { F, read, add, update };
 if (require.main === module) {
   const [, , op, c, a, b] = process.argv;
-  if (op === 'list' && OK.includes(c)) console.log(JSON.stringify(read()[c], null, 1));
+  if (op === 'list' && OK.includes(c)) console.log(JSON.stringify(Object.fromEntries(Object.entries(read()[c]).filter(([, v]) => !v.arsip)), null, 1));
   else if (op === 'add') console.log(add(c, JSON.parse(a)));
-  else if (op === 'update') { update(c, a, JSON.parse(b)); console.log('ok'); }
+  else if (op === 'update') {
+    const v = JSON.parse(b);
+    if (c === 'jobs' && (v.review_naskah || v.review_storyboard || v.review_hasil)) { console.error('Keputusan hanya boleh dibuat pengguna di kantor'); process.exit(1); }
+    if (c === 'jobs' && v.stage === 'animasi') { const e = require('./hasil.cjs').gerbangSb(a); if (e.length) { console.error('ANIMASI DITOLAK\n- ' + e.join('\n- ')); process.exit(1); } }
+    if (c === 'jobs' && v.stage === 'editing') { const e = require('./hasil.cjs').gerbang(a); if (e.length) { console.error('RENDER DITOLAK\n- ' + e.join('\n- ')); process.exit(1); } }
+    update(c, a, JSON.parse(b)); console.log('ok'); }
   else { console.error('Pakai: list|add|update jobs|chat ...'); process.exit(1); }
 }
